@@ -1,0 +1,6 @@
+output_name: "thankyou.pdf"
+page_size: A5
+font: Times-Roman
+font_size: 20
+alignment: 
+
