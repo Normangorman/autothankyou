@@ -2,6 +2,14 @@ Auto generate thankyou cards for Christmas / Birthday / Bar Mitzvah gifts.
 
 Can pull a colour scheme from colourlovers.com API at http://www.colourlovers.com/api/palette/#{id}
 
+Installation:
+- Requires Ruby to be installed. Written with Ruby 2.1.3, although 1.9.3+ is probably fine.
+- The only dependency is Prawn; install it using 'bundle install' if using Bundler, else 'gem install prawn'.
+
+Usage:
+- Edit config.yml as neccessary. Add a block under 'cards' for each card to create.
+- Then 'ruby main.rb'
+
 Available fonts:
 - Courier
 - Helvetica
