@@ -1,6 +1,6 @@
 Auto generate thankyou cards for Christmas / Birthday / Bar Mitzvah gifts.
 
-Can pull colour scheme from colourlovers.com API.
+Can pull a colour scheme from colourlovers.com API at http://www.colourlovers.com/api/palette/#{id}
 
 Available fonts:
 - Courier
@@ -19,4 +19,5 @@ Available fonts:
 - Helvetica-BoldOblique
 
 Available border styles:
-- Circles
+- "circles"
+- "squares"
