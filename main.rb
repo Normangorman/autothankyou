@@ -21,10 +21,10 @@ def main()
 
 	puts "Config file succesfully read."
 
-    create_thankyou(cfg)
+    cfg["cards"].values.each {|card_cfg| create_card(cfg, card_cfg)}
 end
 
-def gen_body_text(cfg)
+def gen_body_text(cfg, card_cfg)
     body_text = ""
 
     phrase_blocks = cfg["phrases"]
@@ -32,12 +32,9 @@ def gen_body_text(cfg)
     phrase_blocks.each do |block_name, phrases|
         puts "Choosing a phrase from #{block_name}."
 
-        # The phrases can contain substrings of the form %name%, which
-        # refer to the values of other variables in the config file.
-        # Replace all these with the value they refer to.
-        phrase = phrases.sample.gsub(/%[a-zA-Z_0-9]+%/) do |match|
-            cfg[match.tr("/%/", "")] # Strip away the '%' signs
-        end
+        # The phrases can contain substrings of the form %GIFT%, which
+        # reference the gift_received parameter in card_cfg.
+        phrase = phrases.sample.gsub(/%GIFT%/, card_cfg["gift_received"])
 
         puts "Phrase chosen: '#{phrase}'"
         body_text += phrase + " "
@@ -46,25 +43,27 @@ def gen_body_text(cfg)
 	return body_text
 end
 
-def create_thankyou(cfg)
+def create_card(cfg, card_cfg)
 	pdf = Prawn::Document.new( :page_size => cfg["page_size"] )
 
+    name          = cfg["name"]
+    block_spacing = cfg["block_spacing"]
+	padding       = cfg["text_padding"]
 	pdf.font cfg["font"]
 	pdf.font_size cfg["font_size"]
 
+    recipient      = card_cfg["recipient"]
+    gift_received  = card_cfg["gift_received"]
+    include_kisses = card_cfg["include_kisses"]
+    output_name    = card_cfg["output_name"]
+
     # Generating text
-    recipient = cfg["recipient"]
     greeting = "Dear #{recipient},"
 
-    body = gen_body_text(cfg)
+    body = gen_body_text(cfg, card_cfg)
 
-    name = cfg["name"]
-    include_kisses = cfg["include_kisses"]
     ending = "Lots of love from #{name}"
     if include_kisses then ending += "\nxxx" end
-
-    block_spacing = cfg["block_spacing"]
-	padding = cfg["text_padding"]
 
     # Calculating text box size
     total_text_height =
@@ -86,7 +85,6 @@ def create_thankyou(cfg)
     puts "total_text_height: #{total_text_height}"
     puts "text_top_bound: #{text_top_bound}"
 
-
 	# Create the bounding box where text will go 
 	pdf.bounding_box(
 		[text_left_bound,
@@ -105,12 +103,9 @@ def create_thankyou(cfg)
 		pdf.stroke_bounds
 	end
 
-	if cfg["border_style"] == "circles"
-		palette_id = cfg["colour_lovers_palette_id"]
-		border_circles(pdf, palette_id)
-	end
+    # imported from borders.rb
+    draw_border(pdf, cfg)
 
-    output_name = cfg["output_name"]
     puts "Saved pdf file as #{output_name}."
 	pdf.render_file output_name
 end
