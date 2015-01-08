@@ -46,9 +46,10 @@ end
 def create_card(cfg, card_cfg)
 	pdf = Prawn::Document.new( :page_size => cfg["page_size"] )
 
-    name          = cfg["name"]
-    block_spacing = cfg["block_spacing"]
-	padding       = cfg["text_padding"]
+    name             = cfg["name"]
+    block_spacing    = cfg["block_spacing"]
+	padding          = cfg["text_padding"]
+    output_directory = cfg["output_directory"]
 	pdf.font cfg["font"]
 	pdf.font_size cfg["font_size"]
 
@@ -107,7 +108,13 @@ def create_card(cfg, card_cfg)
     draw_border(pdf, cfg)
 
     puts "Saved pdf file as #{output_name}."
-	pdf.render_file output_name
+
+    if File.directory?(output_directory) == false
+        puts "Output directory #{output_directory} does not exist so creating it..."
+        Dir.mkdir(output_directory)
+    end
+
+	pdf.render_file(output_directory + '/' + output_name)
 end
 
 def test_fonts()

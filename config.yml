@@ -28,6 +28,7 @@ phrases:
         - Why don't you come over to our house next time you are in the area?
         - Next time we see you it would be great to have a meal together.
 
+output_directory: output
 page_size: A5
 font: Times-Roman
 font_size: 20
