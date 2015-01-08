@@ -40,6 +40,8 @@ def border_circles(pdf, palette_id)
 end
 
 def get_colour_lovers_palette(palette_id)
+	puts "Loading colour palette from colourlovers.com..."
+
     url = "http://www.colourlovers.com/api/palette/#{palette_id}"
     xml_data = Net::HTTP.get_response(URI.parse(url)).body
     doc = REXML::Document.new(xml_data)
@@ -47,6 +49,8 @@ def get_colour_lovers_palette(palette_id)
     doc.elements.each("palettes/palette/colors/hex") do |element|
         colours.push(element.text) # a 6-digit hex string
     end
+
+	puts "Palette loaded."
     return colours
 end
 

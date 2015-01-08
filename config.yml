@@ -2,23 +2,24 @@ recipient: Mozza & Dozza
 gift_received: £10 Amazon voucher
 name: Ben
 include_kisses: true
-thankyou_for_gift_phrases:
-    - Thank you very much for the %GIFT% you gave me.
-    - It was so kind of you to give me a %GIFT%.
-    - I was so happy to receive a %GIFT% from you this year.
-    - Thanks so much for giving me a %GIFT% this year.
-generic_thankyou_phrases:
-    - It made me really happy.
-    - I loved it.
-    - It was one of the best gifts I received.
-    - It was brilliant.
-    - It's so kind of you to send me gifts so often.
-goodwill_phrases:
-    - Hope you're getting on really well.
-    - Hope you're well.
-    - Hope everything is good with you.
-    - All the best to you.
-    - Wishing you well.
+phrases:
+    thankyou_for_gift:
+        - Thank you very much for the %gift_received% you gave me.
+        - It was so kind of you to give me a %gift_received%.
+        - I was so happy to receive a %gift_received% from you this year.
+        - Thanks so much for giving me a %gift_received% this year.
+    generic_thankyou:
+        - It made me really happy.
+        - I loved it.
+        - It was one of the best gifts I received.
+        - It was brilliant.
+        - It's so kind of you to send me gifts so often.
+    goodwill:
+        - Hope you're getting on really well.
+        - Hope you're well.
+        - Hope everything is good with you.
+        - All the best to you.
+        - Wishing you well.
 
 output_name: "thankyou.pdf"
 page_size: A5
@@ -29,4 +30,4 @@ colour_lovers_palette_id: 44764
 border_style: circles
 text_padding: 30
 # Space between Dear x... Thankyou.. etc.
-block_spacing: 10
+block_spacing: 40

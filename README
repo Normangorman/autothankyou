@@ -1,15 +1,22 @@
+Auto generate thankyou cards for Christmas / Birthday / Bar Mitzvah gifts.
+
+Can pull colour scheme from colourlovers.com API.
+
 Available fonts:
-Courier
-Helvetica
-Times-Roman
-Symbol
-ZapfDingbats
-Courier-Bold
-Courier-Oblique
-Courier-BoldOblique
-Times-Bold
-Times-Italic
-Times-BoldItalic
-Helvetica-Bold
-Helvetica-Oblique
-Helvetica-BoldOblique
+- Courier
+- Helvetica
+- Times-Roman
+- Symbol
+- ZapfDingbats
+- Courier-Bold
+- Courier-Oblique
+- Courier-BoldOblique
+- Times-Bold
+- Times-Italic
+- Times-BoldItalic
+- Helvetica-Bold
+- Helvetica-Oblique
+- Helvetica-BoldOblique
+
+Available border styles:
+- Circles
