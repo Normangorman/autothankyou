@@ -1,10 +1,10 @@
-name: Ben
+﻿name: Ben
 cards:
     1:
-        recipient: Mozza & Dozza
-        gift_received: £10 Amazon voucher
+        recipient: Maureen and Dave
+        gift_received: Amazon Voucher
         include_kisses: true
-        output_name: "thankyou.pdf"
+        output_name: "maureenanddave.pdf"
 
 phrases:
     thankyou_for_gift:
@@ -33,7 +33,7 @@ page_size: A5
 font: Times-Roman
 font_size: 20
 # Get a colour palette from the colour lovers API at http://www.colourlovers.com/api/palette/#{id}
-colour_lovers_palette_id: 44764
-border_style: squares
+colour_lovers_palette_id: 3612877
+border_style: circles
 text_padding: 30
 block_spacing: 40

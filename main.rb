@@ -107,14 +107,25 @@ def create_card(cfg, card_cfg)
     # imported from borders.rb
     draw_border(pdf, cfg)
 
-    puts "Saved pdf file as #{output_name}."
+    file_name = output_directory + '/' + output_name
 
     if File.directory?(output_directory) == false
         puts "Output directory #{output_directory} does not exist so creating it..."
         Dir.mkdir(output_directory)
+    elsif File.exist?(file_name)
+        print "The file #{file_name} already exists. Should it be overwritten? (y/n) "
+        response = gets
+        response.chomp!.downcase!
+        if response == 'y' or response == 'yes'
+            File.delete(file_name)
+            puts "Deleted #{file_name}."
+        else
+            return
+        end
     end
 
-	pdf.render_file(output_directory + '/' + output_name)
+	pdf.render_file(file_name)
+    puts "Saved pdf file as #{file_name}."
 end
 
 def test_fonts()
@@ -129,3 +140,5 @@ def test_fonts()
 end
 
 main()
+puts "Finished successfully. Press any key to exit."
+gets
